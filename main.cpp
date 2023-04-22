@@ -3,16 +3,20 @@
 #include <string>
 #include <vector>
 #include <map>
+#include <unordered_map>
 #include <iterator>
+#include "BookClass.h"
 
 int main() {
     std::ifstream bookDatabase;
-    bookDatabase.open("GoodReads100kBooksModified.csv");
+    bookDatabase.open("GoodReads100kBooksFinal.csv");
     std::string unusedStrings;
+    getline(bookDatabase, unusedStrings);
 
-    std::map<std::string, std::string> tempMap;
+    std::unordered_map<std::string, int> uniqueWordsMap;
+    std::vector<BookClass> bookObjects;
 
-    for (int i = 0; i < 500; i++) {
+    for (int i = 0; i < 100001; i++) {
         for (int j = 0; j < 5; j++) {
             getline(bookDatabase, unusedStrings, ',');
         }
@@ -20,12 +24,16 @@ int main() {
         std::string totalRatings;
         getline(bookDatabase, title, ',');
         getline(bookDatabase, totalRatings);
-        tempMap[title] = totalRatings;
-        // should turn each unique book into its own object, will be easier to work with
-    }
+        BookClass newBook(title, totalRatings);
 
-    for (auto iter = tempMap.begin(); iter != tempMap.end(); iter++) {
-        std::cout << "TITLE: " << iter->first << std::endl;
-        std::cout << "RATINGS: " << iter->second << std::endl;
+        if (title == "") {
+            break;
+        }
+
+        std::vector<std::string> tempVector = newBook.returnUniqueWords();
+
+        for (int k = 0; k < tempVector.size(); k++) {
+            uniqueWordsMap[tempVector[k]] += newBook.returnNumberOfReviews();
+        }
     }
 }
