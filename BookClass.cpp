@@ -2,8 +2,10 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <set>
 
-BookClass::BookClass(std::string title, std::string totalReviews) {
+BookClass::BookClass(std::string genre, std::string title, std::string totalReviews) {
+    this->allGenres = genre;
     this->fullTitle = title;
     this->numberOfReviews = totalReviews;
     if (totalReviews == "") {
@@ -13,6 +15,7 @@ BookClass::BookClass(std::string title, std::string totalReviews) {
         this->numberOfReviewsInt = std::stoi(totalReviews);
     }
     uniqueWords(fullTitle);
+    uniqueGenres(allGenres);
 }
 void BookClass::uniqueWords(std::string title) {
     // Logic obtained from https://www.geeksforgeeks.org/how-to-split-a-string-in-cc-python-and-java/
@@ -30,8 +33,27 @@ void BookClass::uniqueWords(std::string title) {
         }
     }
 }
+void BookClass::uniqueGenres(std::string genre) {
+    // Logic obtained from https://www.geeksforgeeks.org/how-to-split-a-string-in-cc-python-and-java/
+    std::string uniqueGenre;
+    for (int i = 0; i < genre.size(); i++) {
+        if (genre[i] == ' ' || i == (genre.size() - 1)) {
+            if (i == (genre.size() - 1)) {
+                uniqueGenre += genre[i];
+            }
+            genreSet.insert(uniqueGenre);
+            uniqueGenre = "";
+        }
+        else {
+            uniqueGenre += genre[i];
+        }
+    }
+}
 std::vector<std::string> BookClass::returnUniqueWords() {
     return uniqueWordsVector;
+}
+std::set<std::string> BookClass::returnGenres() {
+    return genreSet;
 }
 int BookClass::returnNumberOfReviews() {
     return numberOfReviewsInt;
