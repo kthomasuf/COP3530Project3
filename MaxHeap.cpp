@@ -30,7 +30,6 @@ void MaxHeap::insertValue(std::pair<std::string, int> data) {
     heapVector.push_back(data);
     heapifyUp(heapSize - 1);
 }
-
 void MaxHeap::heapifyUp(int index) {
     // Inspired by Lecture Slides
     int parentNode = parent(index);
