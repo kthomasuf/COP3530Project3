@@ -79,7 +79,6 @@ void MaxHeap::heapifyDown(int index) {
             largerValue = rightChild;
         }
     }
-
     if (largerValue != index) {
         std::pair<std::string, int> tempPair = heapVector[index];
         heapVector[index] = heapVector[largerValue];
