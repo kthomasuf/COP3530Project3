@@ -6,6 +6,7 @@
 #include <unordered_map>
 #include <iterator>
 #include "BookClass.h"
+#include "MaxHeap.h"
 
 int main() {
     std::ifstream bookDatabase;
