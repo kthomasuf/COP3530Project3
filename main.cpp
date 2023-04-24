@@ -7,6 +7,7 @@
 #include <iterator>
 #include "BookClass.h"
 #include "MaxHeap.h"
+#include "MinHeap.h"
 
 int main() {
     std::ifstream bookDatabase;
