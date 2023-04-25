@@ -12,7 +12,11 @@ private:
     std::vector<std::string> uniqueWordsVector;
     std::vector<std::string> uniqueGenresVector;
     std::set<std::string> genreSet;
+    std::set<char> notWantedCharacters;
+    std::set<std::string> notWantedWords;
 
+    void addUnwantedCharactersSet();
+    void addUnwantedWords();
     void uniqueWords(std::string title);
     void uniqueGenres(std::string genre);
 public:

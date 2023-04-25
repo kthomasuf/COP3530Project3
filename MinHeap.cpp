@@ -88,6 +88,8 @@ void MinHeap::heapifyDown(int index) {
 std::pair<std::string, int> MinHeap::extractMin() {
     std::pair<std::string, int> temp = heapVector[0];
     heapVector[0] = heapVector[--heapSize];
-    heapifyDown(0);
+    if (heapSize != 0) {
+        heapifyDown(0);
+    }
     return temp;
 }
