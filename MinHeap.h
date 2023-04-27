@@ -4,7 +4,8 @@
 #include <unordered_map>
 #include <string>
 
-class MinHeap {
+class MinHeap
+{
 private:
     int heapSize;
     std::vector<std::pair<std::string, int>> heapVector;
@@ -14,7 +15,9 @@ private:
     void insertValue(std::pair<std::string, int> data);
     void heapifyUp(int index);
     void heapifyDown(int index);
+
 public:
     MinHeap(std::unordered_map<std::string, int> wordData);
     std::pair<std::string, int> extractMin();
+    int size();
 };
