@@ -4,14 +4,17 @@
 #include <vector>
 #include <set>
 
-BookClass::BookClass(std::string genre, std::string title, std::string totalReviews) {
+BookClass::BookClass(std::string genre, std::string title, std::string totalReviews)
+{
     this->allGenres = genre;
     this->fullTitle = title;
     this->numberOfReviews = totalReviews;
-    if (totalReviews == "") {
+    if (totalReviews == "")
+    {
         this->numberOfReviewsInt = 0;
     }
-    else {
+    else
+    {
         this->numberOfReviewsInt = std::stoi(totalReviews);
     }
     addUnwantedCharactersSet();
@@ -19,7 +22,8 @@ BookClass::BookClass(std::string genre, std::string title, std::string totalRevi
     uniqueWords(fullTitle);
     uniqueGenres(allGenres);
 }
-void BookClass::addUnwantedCharactersSet() {
+void BookClass::addUnwantedCharactersSet()
+{
     notWantedCharacters.insert(' ');
     notWantedCharacters.insert('(');
     notWantedCharacters.insert(')');
@@ -36,7 +40,8 @@ void BookClass::addUnwantedCharactersSet() {
     notWantedCharacters.insert('+');
     notWantedCharacters.insert('=');
 }
-void BookClass::addUnwantedWords() {
+void BookClass::addUnwantedWords()
+{
     notWantedWords.insert("");
     notWantedWords.insert("The");
     notWantedWords.insert("the");
@@ -99,46 +104,65 @@ void BookClass::addUnwantedWords() {
     notWantedWords.insert("Not");
     notWantedWords.insert("not");
 }
-void BookClass::uniqueWords(std::string title) {
+void BookClass::uniqueWords(std::string title)
+{
     // Logic obtained from https://www.geeksforgeeks.org/how-to-split-a-string-in-cc-python-and-java/
     std::string uniqueWord;
-    for (int i = 0; i < title.size(); i++) {
-        if (notWantedCharacters.count(title[i]) == 1 || i == (title.size() - 1)) {
-            if (i == (title.size() - 1)) {
+    for (int i = 0; i < title.size(); i++)
+    {
+        if (notWantedCharacters.count(title[i]) == 1 || i == (title.size() - 1))
+        {
+            if (i == (title.size() - 1))
+            {
                 uniqueWord += title[i];
             }
-            if (notWantedWords.count(uniqueWord) != 1) {
+            if (notWantedWords.count(uniqueWord) != 1)
+            {
                 uniqueWordsVector.push_back(uniqueWord);
             }
             uniqueWord = "";
         }
-        else {
+        else
+        {
             uniqueWord += title[i];
         }
     }
 }
-void BookClass::uniqueGenres(std::string genre) {
+void BookClass::uniqueGenres(std::string genre)
+{
     // Logic obtained from https://www.geeksforgeeks.org/how-to-split-a-string-in-cc-python-and-java/
     std::string uniqueGenre;
-    for (int i = 0; i < genre.size(); i++) {
-        if (genre[i] == ' ' || i == (genre.size() - 1)) {
-            if (i == (genre.size() - 1)) {
+    for (int i = 0; i < genre.size(); i++)
+    {
+        if (genre[i] == ' ' || i == (genre.size() - 1))
+        {
+            if (i == (genre.size() - 1))
+            {
                 uniqueGenre += genre[i];
             }
             genreSet.insert(uniqueGenre);
             uniqueGenre = "";
         }
-        else {
+        else
+        {
             uniqueGenre += genre[i];
         }
     }
 }
-std::vector<std::string> BookClass::returnUniqueWords() {
+std::vector<std::string> BookClass::returnUniqueWords()
+{
     return uniqueWordsVector;
 }
-std::set<std::string> BookClass::returnGenres() {
+std::set<std::string> BookClass::returnGenres()
+{
     return genreSet;
 }
-int BookClass::returnNumberOfReviews() {
+int BookClass::returnNumberOfReviews()
+{
     return numberOfReviewsInt;
+}
+
+std::string BookClass::returnFullTitle()
+{
+    return fullTitle;
 }

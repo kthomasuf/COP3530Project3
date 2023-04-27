@@ -3,7 +3,8 @@
 #include <vector>
 #include <set>
 
-class BookClass {
+class BookClass
+{
 private:
     std::string allGenres;
     std::string fullTitle;
@@ -19,9 +20,11 @@ private:
     void addUnwantedWords();
     void uniqueWords(std::string title);
     void uniqueGenres(std::string genre);
+
 public:
     BookClass(std::string genre, std::string title, std::string totalRatings);
     std::vector<std::string> returnUniqueWords();
     std::set<std::string> returnGenres();
     int returnNumberOfReviews();
+    std::string returnFullTitle();
 };
