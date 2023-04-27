@@ -22,8 +22,6 @@ int main()
     std::unordered_map<std::string, int> scienceWordsMap;
     std::unordered_map<std::string, int> fictionWordsMap;
 
-    // Why do we have this? Where's it used at?
-    // I just pushed back the newBook to this
     std::vector<BookClass> bookObjects;
 
     std::set<std::string> allGenres;
