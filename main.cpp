@@ -8,6 +8,8 @@
 #include "BookClass.h"
 #include "MaxHeap.h"
 #include "MinHeap.h"
+#include "BPTree.h"
+
 #include <chrono>
 
 int main()
@@ -106,15 +108,16 @@ int main()
             // time starts here
             begin = std::chrono::high_resolution_clock::now();
 
-            /*
-
-            B+ Code HERE
-
-            */
-
-            // time ends here
+            // B+ CODE
+            BPTree node;
+            for (auto iter = uniqueWordsMap.begin(); iter != uniqueWordsMap.end(); iter++)
+            {
+                node.insert(iter->second);
+            }
+            set<int> printedValues;
+            int count = 0;
+            node.printLargestValues(node.getRoot(), count, 100, printedValues);
             end = std::chrono::high_resolution_clock::now();
-            // print clock values
             elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin);
             std::cout << "B+ tree time taken: " << elapsed.count() << " nanoseconds " << std::endl;
         }
@@ -169,6 +172,19 @@ int main()
                     // print clock values
                     auto elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin);
                     std::cout << "Max Heap time taken: " << elapsed.count() << " nanoseconds " << std::endl;
+
+                    // B+ CODE
+                    end = std::chrono::high_resolution_clock::now();
+                    BPTree node;
+                    for (auto iter = uniqueWordsMapForSpecificGenre.begin(); iter != uniqueWordsMapForSpecificGenre.end(); iter++)
+                    {
+                        node.insert(iter->second);
+                    }
+                    set<int> printedValues;
+                    int count = 0;
+                    node.printLargestValues(node.getRoot(), count, 100, printedValues);
+                    elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin);
+                    std::cout << "B+ tree time taken: " << elapsed.count() << " nanoseconds " << std::endl;
                 }
                 else
                 {
@@ -199,17 +215,18 @@ int main()
             // time starts here
             begin = std::chrono::high_resolution_clock::now();
 
-            /*
-
-            B+ Code HERE
-
-            */
-
-            // time ends here
+            // B+ CODE
+            BPTree node;
+            for (auto iter = uniqueWordsMap.begin(); iter != uniqueWordsMap.end(); iter++)
+            {
+                node.insert(iter->second);
+            }
+            set<int> printedValues;
+            int count = 0;
+            node.printLargestValues(node.getRoot(), count, 100, printedValues);
             end = std::chrono::high_resolution_clock::now();
-            // print clock values
             elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin);
-            std::cout << "B+ Tree time taken: " << elapsed.count() << " nanoseconds " << std::endl;
+            std::cout << "B+ tree time taken: " << elapsed.count() << " nanoseconds " << std::endl;
         }
         if (userInput == "4")
         {
@@ -261,6 +278,19 @@ int main()
                     // print clock values
                     auto elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin);
                     std::cout << "Min Heap time taken: " << elapsed.count() << " nanoseconds " << std::endl;
+
+                    // B+ CODE
+                    end = std::chrono::high_resolution_clock::now();
+                    BPTree node;
+                    for (auto iter = uniqueWordsMapForSpecificGenre.begin(); iter != uniqueWordsMapForSpecificGenre.end(); iter++)
+                    {
+                        node.insert(iter->second);
+                    }
+                    set<int> printedValues;
+                    int count = 0;
+                    node.printLargestValues(node.getRoot(), count, 100, printedValues);
+                    elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin);
+                    std::cout << "B+ tree time taken: " << elapsed.count() << " nanoseconds " << std::endl;
                 }
                 else
                 {
