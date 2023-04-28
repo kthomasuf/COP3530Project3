@@ -101,9 +101,8 @@ int main()
             auto end = std::chrono::high_resolution_clock::now();
             // print clock values
             auto elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin);
-            std::cout << "time taken: " << elapsed.count() << " nanoseconds " << std::endl;
+            std::cout << "Max Heap time taken: " << elapsed.count() << " nanoseconds " << std::endl;
 
-            // do the same thing but for B+ tree
             // time starts here
             begin = std::chrono::high_resolution_clock::now();
 
@@ -117,7 +116,7 @@ int main()
             end = std::chrono::high_resolution_clock::now();
             // print clock values
             elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin);
-            std::cout << "time taken: " << elapsed.count() << " nanoseconds " << std::endl;
+            std::cout << "B+ tree time taken: " << elapsed.count() << " nanoseconds " << std::endl;
         }
         if (userInput == "2")
         {
@@ -169,7 +168,7 @@ int main()
                     auto end = std::chrono::high_resolution_clock::now();
                     // print clock values
                     auto elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin);
-                    std::cout << "time taken: " << elapsed.count() << " nanoseconds " << std::endl;
+                    std::cout << "Max Heap time taken: " << elapsed.count() << " nanoseconds " << std::endl;
                 }
                 else
                 {
@@ -195,16 +194,22 @@ int main()
             auto end = std::chrono::high_resolution_clock::now();
             // print clock values
             auto elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin);
-            std::cout << "time taken: " << elapsed.count() << " nanoseconds " << std::endl;
-            // do the same thing but for B+ tree
+            std::cout << "Min Heap time taken: " << elapsed.count() << " nanoseconds " << std::endl;
+
             // time starts here
             begin = std::chrono::high_resolution_clock::now();
+
+            /*
+
+            B+ Code HERE
+
+            */
 
             // time ends here
             end = std::chrono::high_resolution_clock::now();
             // print clock values
             elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin);
-            std::cout << "time taken: " << elapsed.count() << " nanoseconds " << std::endl;
+            std::cout << "B+ Tree time taken: " << elapsed.count() << " nanoseconds " << std::endl;
         }
         if (userInput == "4")
         {
@@ -255,7 +260,7 @@ int main()
                     auto end = std::chrono::high_resolution_clock::now();
                     // print clock values
                     auto elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin);
-                    std::cout << "time taken: " << elapsed.count() << " nanoseconds " << std::endl;
+                    std::cout << "Min Heap time taken: " << elapsed.count() << " nanoseconds " << std::endl;
                 }
                 else
                 {
@@ -276,6 +281,7 @@ int main()
             auto end = std::chrono::high_resolution_clock::now();
             // print clock values
             auto elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin);
+            std::cout << "Min Heap time taken: " << elapsed.count() << " nanoseconds " << std::endl;
         }
     }
 

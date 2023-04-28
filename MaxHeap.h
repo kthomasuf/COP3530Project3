@@ -20,5 +20,4 @@ public:
     MaxHeap(std::unordered_map<std::string, int> wordData);
     std::pair<std::string, int> extractMax();
     int size();
-    void getWholeHeap();
 };
